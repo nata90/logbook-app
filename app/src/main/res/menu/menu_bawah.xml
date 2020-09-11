@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Home" />
+    <item
+        android:id="@+id/logbook"
+        android:icon="@drawable/ic_baseline_receipt_24"
+        android:title="Logbook" />
+    <item
+        android:id="@+id/rekap"
+        android:icon="@drawable/ic_baseline_storage_24"
+        android:title="Rekap" />
+
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/ic_baseline_trending_flat_24"
+        android:title="Logout" />
+
+</menu>
