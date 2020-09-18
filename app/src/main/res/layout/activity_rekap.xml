@@ -89,6 +89,7 @@
             android:layout_gravity="bottom"
             android:foregroundGravity="bottom"
             android:background="@android:color/white"
+            app:labelVisibilityMode="labeled"
             app:menu="@menu/menu_bawah"/>
 
     </FrameLayout>

@@ -94,6 +94,7 @@
         android:id="@+id/menu_bawah"
         android:layout_gravity="bottom"
         android:foregroundGravity="bottom"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/menu_bawah"/>
 
 </RelativeLayout>

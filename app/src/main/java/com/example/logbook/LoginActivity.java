@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
         pDialog.setMessage("login Process...");
         showDialog();
 
-        String url = "http://ws.rsupsoeradji.id/elogbook/web/index.php?r=webservice/login";
+        String url = "https://hananfr.online/elogbook/web/index.php?r=webservice/login";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {

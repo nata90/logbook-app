@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
     private void getTugas(){
-        String url = "http://ws.rsupsoeradji.id/elogbook/web/index.php?r=webservice/datatugas&id="+Preferences.getLoggedUnitKerja(getBaseContext());
+        String url = "https://hananfr.online/elogbook/web/index.php?r=webservice/datatugas&id="+Preferences.getLoggedUnitKerja(getBaseContext());
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 params.put("idpeg",pegawai);
 
                 RequestHandler rh = new RequestHandler();
-                String res = rh.sendPostRequest("http://ws.rsupsoeradji.id/elogbook/web/index.php?r=webservice/simpankinerja", params);
+                String res = rh.sendPostRequest("https://hananfr.online/elogbook/web/index.php?r=webservice/simpankinerja", params);
                 return res;
             }
         }

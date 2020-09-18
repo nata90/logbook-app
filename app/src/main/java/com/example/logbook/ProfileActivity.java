@@ -125,7 +125,8 @@ public class ProfileActivity extends AppCompatActivity implements BottomNavigati
     }
 
     private void getProfile(){
-        String url = "http://ws.rsupsoeradji.id/elogbook/web/index.php?r=webservice/profile&id="+Preferences.getLoggedPegawaiId(getBaseContext());
+        String url = "https://hananfr.online/elogbook/web/index.php?r=webservice/profile&id="+Preferences.getLoggedPegawaiId(getBaseContext());
+        //String url = "https://hananfr.online/elogbook/web/index.php?r=webservice/profile&id=183";
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {

@@ -157,7 +157,7 @@ public class RekapActivity extends AppCompatActivity implements BottomNavigation
     }
 
     private void getRekap(String param_date){
-        String url = "http://ws.rsupsoeradji.id/elogbook/web/index.php?r=webservice/getrekap&id="+Preferences.getLoggedPegawaiId(getBaseContext())+"&date="+param_date;
+        String url = "https://hananfr.online/elogbook/web/index.php?r=webservice/getrekap&id="+Preferences.getLoggedPegawaiId(getBaseContext())+"&date="+param_date;
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
