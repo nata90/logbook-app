@@ -1,5 +1,6 @@
 package com.example.logbook;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -34,8 +36,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 
 import static android.R.layout.simple_list_item_1;
 import static com.example.logbook.R.color.colorRed;
@@ -51,6 +57,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private ProgressDialog pDialog;
     private BottomNavigationView menu_bawah;
 
+    Calendar myCalendar;
+    DatePickerDialog.OnDateSetListener date;
+    EditText datelogbook;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +68,36 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         setContentView(R.layout.activity_parse);
 
         Button buttonSubmit = findViewById(R.id.button_parse);
+
+        datelogbook = findViewById(R.id.datelogbook);
+        String date_now = new SimpleDateFormat("dd-MMMM-yyyy").format(new Date());
+        datelogbook.setText(date_now);
+        myCalendar = Calendar.getInstance();
+
+        date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                TextView tanggal = findViewById(R.id.datelogbook);
+                String myFormat = "dd MMMM yyyy";
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+                tanggal.setText(sdf.format(myCalendar.getTime()));
+            }
+        };
+
+        datelogbook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(MainActivity.this, date,
+                        myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -176,6 +216,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         final String tugas = spintugas.getSelectedItem().toString().trim();
         final String deskripsi = editTextDeskripsi.getText().toString().trim();
         final String jumlah = editTextJumlah.getText().toString().trim();
+        final String tanggal =  datelogbook.getText().toString().trim();
         final String pegawai = Preferences.getLoggedPegawaiId(getBaseContext());
 
         class AddTugas extends AsyncTask<Void,Void,String>{
@@ -201,6 +242,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 params.put("deskripsi",deskripsi);
                 params.put("jumlah",jumlah);
                 params.put("idpeg",pegawai);
+                params.put("tanggal",tanggal);
 
                 RequestHandler rh = new RequestHandler();
                 String res = rh.sendPostRequest("https://hananfr.online/elogbook/web/index.php?r=webservice/simpankinerja", params);

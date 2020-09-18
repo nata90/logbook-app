@@ -91,11 +91,33 @@
                 android:layout_marginRight="10dp"
                 android:inputType="text" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="360dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="TANGGAL"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/datelogbook"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:layout_marginTop="400dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:focusable="false"
+                android:padding="12dp"
+                android:textSize="16sp" />
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="400dp">
+                android:layout_marginTop="480dp">
                 <Button
                     android:id="@+id/button_parse"
                     android:layout_width="wrap_content"
